@@ -1,0 +1,85 @@
+.character {
+  &Card {
+    display: flex;
+    background-color: var(--color-gray-800);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all .15s;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:hover {
+      opacity: .5;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    &.isDeceased {
+      opacity: .15;
+    }
+
+    .iconContainer {
+      width: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      svg {
+        width: 50%;
+        height: auto;
+      }
+    }
+  }
+
+  &Image {
+    width: 150px;
+    height: 100%;
+    object-fit: cover;
+    transition: all .15s;
+  }
+
+  &Info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 1;
+  
+    h2 {
+      margin: 0 0 10px;
+      color: var(--color-white);
+    }
+
+    .characterField {
+      margin: 4px 0;
+      color: var(--color-gray-400);
+      text-transform: capitalize;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 5px;
+
+      p {
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      padding: 10px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .character {
+    &Card {
+      flex-direction: column;
+    }
+
+    &Image {
+      width: 100%;
+      min-height: 270px;
+      max-height: 270px;
+      object-position: top;
+    }
+  }
+}
