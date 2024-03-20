@@ -1,4 +1,5 @@
 .cardsGrid {
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
@@ -16,4 +17,16 @@
   @media (max-width: 768px) {
     row-gap: 16px;
   }
+}
+
+.sectionOrderBy {
+  display: flex;
+  justify-content: space-between;
+}
+
+.emptyItems {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }

@@ -3,16 +3,22 @@ import { CharactersType } from "@/types/characters";
 import { formatDate } from "@/utils/formatDate";
 import { Calendar, Castle, CircleUserRound, Crown, ImageOff } from "lucide-react";
 
-export function Card({ character }: { character: CharactersType }) {
+export function Card(
+  { character, layout }: { character: CharactersType, layout: boolean },
+) {
   if (!character) return;
 
   const iconSettings = {
-    size: 20, 
-    strokeWidth: 2.5
-  }
+    size: 20,
+    strokeWidth: 2.5,
+  };
 
   return (
-    <div className={`${styles.characterCard} ${!character.alive ? styles.isDeceased : ''}`}>
+    <div
+      className={`${styles.characterCard} ${
+        !character.alive ? styles.isDeceased : ""
+      }`}
+    >
       {character.image ? (
         <img
           src={character.image}

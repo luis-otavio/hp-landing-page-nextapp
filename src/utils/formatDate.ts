@@ -22,3 +22,20 @@ export const formatDate = (dateString: string): string => {
   console.error('Formato de data inválido:', dateString);
   return 'Formato de data inválido';
 }
+
+export const convertDateStringToTimestamp = (dateString: string): number => {
+  if (!dateString || dateString.trim().length === 0) {
+    console.error('Data vazia ou inválida:', dateString);
+    return 0;
+  }
+
+  const parts = dateString.split("-");
+  if (parts.length === 3) {
+    const formattedDateString = `${parts[2]}-${parts[1]}-${parts[0]}`;
+    const date = new Date(formattedDateString);
+    return date.getTime();
+  } else {
+    console.error('Formato de data inválido:', dateString);
+    return 0;
+  }
+};

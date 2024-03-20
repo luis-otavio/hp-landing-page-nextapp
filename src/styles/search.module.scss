@@ -1,0 +1,40 @@
+.searchContent {
+  position: relative;
+
+  .input {
+    width: calc(100% - 24px);
+    color: var(--color-gray-400);
+    font-size: 1rem;
+    border-radius: 20px;
+    padding: .75rem;
+    border: 1px solid var(--color-gray-600);
+    background-color: var(--color-gray-700);
+    transition: all .12s;
+
+    &::placeholder {
+      color: var(--color-gray-400);
+    }
+  
+    &:focus {
+      outline: transparent;
+      color: var(--color-gray-700);
+      background-color: var(--color-gray-400);
+  
+      &::placeholder {
+        color: var(--color-gray-700);
+      }
+
+      + .closeButton {
+        color: var(--color-gray-700);
+      }
+    }
+  }
+  
+  .closeButton {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    cursor: pointer;
+    transition: all .12s;
+  }
+}

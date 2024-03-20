@@ -2,6 +2,6 @@ import styles from "@/styles/header.module.scss"
 
 export function Header() {
   return (
-    <div className={styles.content}>HP LP</div>
+    <div className={styles.content}>Harry Potter Characters</div>
   )
 }

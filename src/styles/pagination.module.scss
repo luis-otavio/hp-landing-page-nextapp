@@ -1,3 +1,49 @@
 .pagination {
+  width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.pageItem {
+  display: flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-gray-700);
+  border: 1px solid var(--color-gray-600);
+  border-radius: 999px;
+  padding: 0.625rem;
+  color: var(--color-white);
+  font-size: .75rem;
+  cursor: pointer;
+  transition: all .1s;
+
+  &:hover:not(&.active) {
+    opacity: .7;
+  }
+
+  &.active {
+    background-color: var(--color-purple);
+  }
+}
+
+@media (max-width: 768px) {
+  .pagination {
+    gap: 5px;
+  }
+
+  .pageItem {
+    width: 28px;
+    height: 28px;
+    padding: 0.5rem;
+    font-size: 0.65rem;
+
+    svg {
+      width: 0.625rem;
+      height: 0.625rem;
+    }
+  }
 }

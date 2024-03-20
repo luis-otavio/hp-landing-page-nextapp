@@ -1,0 +1,17 @@
+.orderBy {
+  padding: .5rem;
+  border-radius: 18px;
+  color: var(--color-gray-400);
+  border: 1px solid var(--color-gray-600);
+  background-color: var(--color-gray-700);
+
+  &:focus {
+    outline: transparent;
+    color: var(--color-gray-700);
+    background-color: var(--color-gray-400);
+
+    &::placeholder {
+      color: var(--color-gray-400);
+    }
+  }
+}
