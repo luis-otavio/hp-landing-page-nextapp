@@ -6,7 +6,7 @@ interface SearchProps {
   setSearchValue: (value: string) => void;
 }
 
-const Search: React.FC<SearchProps> = ({ searchValue, setSearchValue }) => {
+export function Search({ searchValue, setSearchValue }: SearchProps) {
   return (
     <div className={styles.searchContent}>
       <input
@@ -25,5 +25,3 @@ const Search: React.FC<SearchProps> = ({ searchValue, setSearchValue }) => {
     </div>
   );
 };
-
-export default Search;

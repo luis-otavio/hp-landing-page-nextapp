@@ -20,8 +20,18 @@
 }
 
 .sectionOrderBy {
-  display: flex;
-  justify-content: space-between;
+  position: relative;
+}
+
+.totalCount {
+  text-align: center;
+
+  &AndPagination {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 16px;
+  }
 }
 
 .emptyItems {

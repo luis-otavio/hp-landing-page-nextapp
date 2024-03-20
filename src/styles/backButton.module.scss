@@ -1,0 +1,9 @@
+.button {
+  color: var(--color-white);
+  text-decoration: none;
+  transition: opacity .1s;
+
+  &:hover {
+    opacity: .5;
+  }
+}

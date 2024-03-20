@@ -1,4 +1,4 @@
-import styles from "@/styles/orderBuButton.module.scss";
+import styles from "@/styles/orderByButton.module.scss";
 
 interface OrderByProps {
   setOrderBy: (value: string) => void;
@@ -11,6 +11,7 @@ export function OrderByButton({ setOrderBy }: OrderByProps) {
       defaultValue="Sort By"
       className={styles.orderBy}
     >
+      <option disabled>Sort By</option>
       <option value="default">Default</option>
       <option value="nameAz">Name A-z</option>
       <option value="nameZa">Name Z-a</option>

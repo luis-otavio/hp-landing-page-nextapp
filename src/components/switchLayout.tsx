@@ -1,5 +1,3 @@
-'use client'
-
 import { LayoutGrid, StretchHorizontal } from 'lucide-react';
 
 import styles from "@/styles/switchLayout.module.scss";

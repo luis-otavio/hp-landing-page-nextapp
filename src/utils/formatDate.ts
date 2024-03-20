@@ -19,13 +19,11 @@ export const formatDate = (dateString: string): string => {
     }
   }
 
-  console.error('Formato de data inválido:', dateString);
   return 'Formato de data inválido';
 }
 
 export const convertDateStringToTimestamp = (dateString: string): number => {
   if (!dateString || dateString.trim().length === 0) {
-    console.error('Data vazia ou inválida:', dateString);
     return 0;
   }
 
@@ -35,7 +33,6 @@ export const convertDateStringToTimestamp = (dateString: string): number => {
     const date = new Date(formattedDateString);
     return date.getTime();
   } else {
-    console.error('Formato de data inválido:', dateString);
     return 0;
   }
 };

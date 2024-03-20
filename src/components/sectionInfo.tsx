@@ -3,15 +3,15 @@
 import React, { useEffect, useMemo, useState } from 'react';
 
 import { Card } from "./card"
+import { Search } from './search';
 import { Pagination } from './pagination';
 import { SwitchLayout } from './switchLayout';
 import { OrderByButton } from './orderByButton';
 
 import { CharactersType } from '@/types/characters';
+import { convertDateStringToTimestamp } from '@/utils/formatDate';
 
 import styles from "@/styles/sectionInfo.module.scss";
-import { convertDateStringToTimestamp } from '@/utils/formatDate';
-import Search from './search';
 
 export function SectionInfo({ characters }: { characters: CharactersType[] }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -34,24 +34,27 @@ export function SectionInfo({ characters }: { characters: CharactersType[] }) {
     }
 
     return filteredAndSorted.sort((a, b) => {
-      if (orderBy === 'nameAz') {
+      if (orderBy === "nameAz") {
         return a.name.localeCompare(b.name);
-      } else if (orderBy === 'nameZa') {
+      } else if (orderBy === "nameZa") {
         return b.name.localeCompare(a.name);
-      } else if (orderBy === 'dateOfBirthASC') {
-        const timestampA = convertDateStringToTimestamp(a.dateOfBirth);
-        const timestampB = convertDateStringToTimestamp(b.dateOfBirth);
-        return timestampA - timestampB;
-      } else if (orderBy === 'dateOfBirthDESC') {
-        const timestampA = convertDateStringToTimestamp(a.dateOfBirth);
-        const timestampB = convertDateStringToTimestamp(b.dateOfBirth);
-        return timestampB - timestampA;
+      } else if (
+        orderBy === "dateOfBirthASC" ||
+        orderBy === "dateOfBirthDESC"
+      ) {
+        if (a.dateOfBirth && b.dateOfBirth) {
+          const timestampA = convertDateStringToTimestamp(a.dateOfBirth);
+          const timestampB = convertDateStringToTimestamp(b.dateOfBirth);
+          return orderBy === "dateOfBirthASC"
+            ? timestampA - timestampB
+            : timestampB - timestampA;
+        }
+        return a.dateOfBirth ? -1 : 1;
       }
 
       return 0;
     });
   }, [characters, orderBy, searchValue]);
-  
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -67,7 +70,6 @@ export function SectionInfo({ characters }: { characters: CharactersType[] }) {
   return (
     <>
       <Search searchValue={searchValue} setSearchValue={setSearchValue} />
-
       <div className={styles.sectionOrderBy}>
         <SwitchLayout toggleLayout={toggleLayout} isGrid={isGrid} />
         <OrderByButton setOrderBy={setOrderBy} />
@@ -78,18 +80,18 @@ export function SectionInfo({ characters }: { characters: CharactersType[] }) {
         ))}
       </div>
       {sortedAndFilteredCharacters.length > 0 ? (
-        <>
-          <div>Total: {sortedAndFilteredCharacters.length}</div>
+        <div className={styles.totalCountAndPagination}>
+          <div className={styles.totalCount}>Total: {sortedAndFilteredCharacters.length}</div>
           <Pagination
             itemsPerPage={itemsPerPage}
             totalItems={sortedAndFilteredCharacters.length}
             currentPage={currentPage}
             paginate={paginate}
           />
-        </>
+        </div>
       ) : (
         <div className={styles.emptyItems}>
-          Ops... Nenhum resultado encontrado.
+          Oops... No results found.
         </div>
       )}
     </>

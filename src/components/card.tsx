@@ -1,7 +1,11 @@
-import styles from "@/styles/card.module.scss";
+import Image from "next/image"
+import Link from 'next/link'
+import { Calendar, Castle, CircleUserRound, Crown, ImageOff } from "lucide-react";
+
 import { CharactersType } from "@/types/characters";
 import { formatDate } from "@/utils/formatDate";
-import { Calendar, Castle, CircleUserRound, Crown, ImageOff } from "lucide-react";
+
+import styles from "@/styles/card.module.scss";
 
 export function Card(
   { character, layout }: { character: CharactersType, layout: boolean },
@@ -14,16 +18,22 @@ export function Card(
   };
 
   return (
-    <div
+    <Link
+      href={`/character/${character.id}`}
       className={`${styles.characterCard} ${
         !character.alive ? styles.isDeceased : ""
-      }`}
+      } ${layout ? styles.gridLayout : styles.listLayout}`}
     >
       {character.image ? (
-        <img
+        <Image
+          priority
+          width={160}
+          height={100}
+          quality={100}
           src={character.image}
           alt={character.name}
-          className={styles.characterImage}
+          className={`${styles.characterImage} opacity-0`}
+          onLoad={(image) => image.currentTarget.classList.remove("opacity-0")}
         />
       ) : (
         <div className={styles.iconContainer}>
@@ -61,6 +71,6 @@ export function Card(
           </div>
         )}
       </div>
-    </div>
+    </Link>
   );
 }
