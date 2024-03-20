@@ -1,7 +1,12 @@
+'use client'
+
+import { RingLoader } from "react-spinners";
+import styles from "@/styles/loading.module.scss"
+
 export default function HomeLoading() {
   return (
-    <p style={{ maxWidth: "1280px", margin: "4rem auto", textAlign: "center" }}>
-      Loading...
-    </p>
+    <div className={styles.container}>
+      <RingLoader color="#FFFFFF" speedMultiplier={2} />
+    </div>
   );
 }

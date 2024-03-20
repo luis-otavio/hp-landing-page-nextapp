@@ -28,8 +28,6 @@ async function getCharacter(id: string) {
 export default async function CharacterPage({ params }: CharacterProps) {
   const character: CharactersType = await getCharacter(params.id);
 
-  console.log('character', character)
-
   return (
     <div className={styles.container}>
       <BackButton />
@@ -52,95 +50,95 @@ export default async function CharacterPage({ params }: CharacterProps) {
           )}
         </div>
         <div className={styles.contentInfo}>
-          <h2>{character.name}</h2>
+          <h2 className={styles.contentInfoName}>{character.name}</h2>
           <ul className={styles.contentInfoList}>
             {character.alternate_names.length !== 0 && (
-              <li>
+              <li className={styles.contentInfoItem}>
                 <strong>Alternate Names:</strong>{" "}
                 {character.alternate_names.join(", ")}
               </li>
             )}
             {character.species && (
-              <li>
+              <li className={styles.contentInfoItem}>
                 <strong>Species:</strong> {character.species}
               </li>
             )}
             {character.gender && (
-              <li>
+              <li className={styles.contentInfoItem}>
                 <strong>Gender:</strong> {character.gender}
               </li>
             )}
             {character.house && (
-              <li>
+              <li className={styles.contentInfoItem}>
                 <strong>House:</strong> {character.house}
               </li>
             )}
             {character.dateOfBirth && (
-              <li>
+              <li className={styles.contentInfoItem}>
                 <strong>Date of Birth:</strong> {character.dateOfBirth}
               </li>
             )}
             {character.yearOfBirth && (
-              <li>
+              <li className={styles.contentInfoItem}>
                 <strong>Year of Birth:</strong> {character.yearOfBirth}
               </li>
             )}
             {character.wizard && (
-              <li>
+              <li className={styles.contentInfoItem}>
                 <strong>Wizard:</strong> {character.wizard ? "Yes" : "No"}
               </li>
             )}
             {character.ancestry && (
-              <li>
+              <li className={styles.contentInfoItem}>
                 <strong>Ancestry:</strong> {character.ancestry}
               </li>
             )}
             {character.eyeColour && (
-              <li>
+              <li className={styles.contentInfoItem}>
                 <strong>Eye Colour:</strong> {character.eyeColour}
               </li>
             )}
             {character.hairColour && (
-              <li>
+              <li className={styles.contentInfoItem}>
                 <strong>Hair Colour:</strong> {character.hairColour}
               </li>
             )}
             {character.wand.wood && character.wand.core && (
-              <li>
+              <li className={styles.contentInfoItem}>
                 <strong>Wand:</strong>{" "}
                 {`${character.wand.wood} wood, ${character.wand.core} core, ${character.wand.length} inches`}
               </li>
             )}
             {character.patronus && (
-              <li>
+              <li className={styles.contentInfoItem}>
                 <strong>Patronus:</strong> {character.patronus}
               </li>
             )}
             {character.hogwartsStudent !== undefined && (
-              <li>
+              <li className={styles.contentInfoItem}>
                 <strong>Hogwarts Student:</strong>{" "}
                 {character.hogwartsStudent ? "Yes" : "No"}
               </li>
             )}
             {character.hogwartsStaff !== undefined && (
-              <li>
+              <li className={styles.contentInfoItem}>
                 <strong>Hogwarts Staff:</strong>{" "}
                 {character.hogwartsStaff ? "Yes" : "No"}
               </li>
             )}
             {character.actor && (
-              <li>
+              <li className={styles.contentInfoItem}>
                 <strong>Actor:</strong> {character.actor}
               </li>
             )}
             {character.alternate_actors.length !== 0 && (
-              <li>
+              <li className={styles.contentInfoItem}>
                 <strong>Alternate Actors:</strong>{" "}
                 {character.alternate_actors.join(", ")}
               </li>
             )}
             {character.alive !== undefined && (
-              <li>
+              <li className={styles.contentInfoItem}>
                 <strong>Alive:</strong> {character.alive ? "Yes" : "No"}
               </li>
             )}
